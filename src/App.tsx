@@ -1,28 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Axios from './Axios';
+import { Link } from 'react-router-dom';
 
-function Button() {
-  return (<button>componente button</button>);
+function DataPrint(value: number[]) {
+  return <div>{value.map((element: number) => { return <h1>{element}</h1> })}</div>
 }
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [count2, setCount2] = useState(0);
+  const [data, setData] = useState<number[]>([1])
+  const [counter, setCounter] = useState<number>(1)
   useEffect(() => {
-    // Actualiza el título del documento usando la Browser API
-    document.title = `You clicked ${count} times`;
-    console.log("se ejecuto")
-  }, [count2]);
+    console.log("renderizado")
+    if (data.length !== counter)
+      // newData.concat(data);
+      setData(data.concat(counter))
+      console.log("asignamos")
+      console.log(data)
+  }, [counter, data])
+
   return (
     <div className="App">
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <button onClick={() => setCount2(count2 + 1)}>
-        dont Click me
-      </button>
+      <header className="App-header">
+        <Link to={`/signin/`}><h2 color='red'>inciar sesion</h2></Link>
+        <h1>{counter}</h1>
+        <button onClick={() => setCounter(counter + 1)}>Aumentar</button>
+        {DataPrint(data)}
+        <Axios />
+      </header>
     </div>
   );
 }
