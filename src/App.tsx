@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Axios from './Axios';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import NotFound from './pages/NotFound';
 
-function DataPrint(value: number[]) {
-  return <div>{value.map((element: number) => { return <h1>{element}</h1> })}</div>
-}
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/signin/',
+    element: <SignIn />,
+  },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
+]);
 
 function App() {
-  const [data, setData] = useState<number[]>([1])
-  const [counter, setCounter] = useState<number>(1)
-  useEffect(() => {
-    console.log("renderizado")
-    if (data.length !== counter)
-      // newData.concat(data);
-      setData(data.concat(counter))
-      console.log("asignamos")
-      console.log(data)
-  }, [counter, data])
-
   return (
     <div className="App">
-      <header className="App-header">
-        <Link to={`/signin/`}><h2 color='red'>inciar sesion</h2></Link>
-        <h1>{counter}</h1>
-        <button onClick={() => setCounter(counter + 1)}>Aumentar</button>
-        {DataPrint(data)}
-        <Axios />
-      </header>
+      <RouterProvider router={router} />
     </div>
   );
 }
