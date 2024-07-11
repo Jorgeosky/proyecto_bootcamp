@@ -27,7 +27,7 @@ function NavBarPage(props: { setExist: any; onOpen: any }) {
       });
       setLoading(false);
     }
-  }, [loading]);
+  }, [loading, dispatch]);
 
   return (
     <Navbar style={{ background: 'black' }}>

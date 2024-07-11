@@ -21,15 +21,7 @@ export const GetUsers = (): User[] => {
   return data;
 };
 
-export const GetTweets = () => {
-  const [data, setData] = useState({});
-
-  useEffect(() => {
-    fetch('/database.json')
-      .then((response) => response.json())
-      .then((json) => setData(json.tweets));
-    console.log(data);
-  }, []);
-
-  return data;
-};
+export const GetTweets = () =>
+  fetch('/database.json')
+    .then((response) => response.json())
+    .then((json) => json.tweets);

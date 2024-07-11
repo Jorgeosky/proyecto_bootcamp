@@ -4,9 +4,46 @@
       "id": 1,
       "username": "roberto123",
       "name": "roberto cequera",
+      "image": "https://avatars.githubusercontent.com/u/30373425?v=4",
       "email": "roberto.cerquera@example.com",
+      "description": "FullStack development",
+      "following": 30,
+      "followers": 100,
       "password": "1234"
     }
   ],
-  "tweets": []
+  "tweets": [
+    {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "username": "roberto123",
+        "name": "roberto cequera",
+        "image": "https://avatars.githubusercontent.com/u/30373425?v=4",
+        "description": "FullStack development",
+        "following": 30,
+        "followers": 100
+      },
+      "text_content": "Hola chicos este es mi primer tweet",
+      "image_content": "",
+      "hashtags": ["tweet", "development"],
+      "likes": 5
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": 1,
+        "username": "roberto123",
+        "name": "roberto cequera",
+        "image": "https://avatars.githubusercontent.com/u/30373425?v=4",
+        "description": "FullStack development",
+        "following": 30,
+        "followers": 100
+      },
+      "text_content": "Hola chicos este es mi segundo tweet",
+      "image_content": "",
+      "hashtags": ["development"],
+      "likes": 10
+    }
+  ]
 }

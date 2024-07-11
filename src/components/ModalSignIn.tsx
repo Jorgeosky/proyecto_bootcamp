@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from '@nextui-org/react';
 import { EyeFilledIcon, EyeSlashFilledIcon } from './utils/Icons';
-import { useDispath, useSelector } from '../store/store';
+import { useDispath } from '../store/store';
 import { GetUsers, User } from '../api/database';
 
 function ModalSignIn(props: {
@@ -35,10 +35,7 @@ function ModalSignIn(props: {
 
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
-  const user = useSelector((state: any) => state.user);
   const userData = GetUsers();
-
-  useEffect(() => {});
 
   useEffect(() => {
     console.log('onloading', loading);
@@ -63,10 +60,26 @@ function ModalSignIn(props: {
             },
           });
           setLoading(false);
+          setUsername('');
+          setName('');
+          setEmail('');
+          setPassword('');
+          setPasswordVisible(false);
+          setUsernameIsValid(true);
+          setEmailIsValid(true);
+          setPasswordAgain('');
           props.onOpenChange();
         } else {
           setIsPopoverOpen(true);
           setLoading(false);
+          setUsername('');
+          setName('');
+          setEmail('');
+          setPassword('');
+          setPasswordVisible(false);
+          setUsernameIsValid(true);
+          setEmailIsValid(true);
+          setPasswordAgain('');
         }
       } else {
         try {
@@ -82,6 +95,14 @@ function ModalSignIn(props: {
           });
           setLoading(false);
           props.onOpenChange();
+          setUsername('');
+          setName('');
+          setEmail('');
+          setPassword('');
+          setPasswordVisible(false);
+          setUsernameIsValid(true);
+          setEmailIsValid(true);
+          setPasswordAgain('');
         } catch (error) {
           //<Alert>Error {error.statusCode}: {error.message}</Alert>
         }
@@ -143,7 +164,7 @@ function ModalSignIn(props: {
                         isInvalid={!emailIsValid}
                         errorMessage="El email ingresado ya se encuentra registrado"
                         onValueChange={(value: string) => {
-                          user.forEach((user: any) => {
+                          userData.forEach((user: any) => {
                             if (user.email === value) {
                               setEmailIsValid(false);
                             } else {
